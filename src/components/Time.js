@@ -1,5 +1,5 @@
 
-export default function Time({ time, format, onChange }) {
+export default function Time({ time, format, onChange, checked }) {
     return (
         <div className="w-full">
             <input
@@ -10,6 +10,7 @@ export default function Time({ time, format, onChange }) {
                 className="hidden peer"
                 onChange={() => {onChange(time, format)}}
                 name="time"
+                checked={checked}
             />
             <label htmlFor={time} className="cursor-pointer w-24 h-32 bg-gray-700 flex flex-col justify-center items-center rounded-md peer-checked:bg-rose-600 peer-checked:text-white">
                 <p className='text-2xl font-medium'>{time}</p>

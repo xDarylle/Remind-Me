@@ -2,7 +2,7 @@ import ModalAction from './ModalAction'
 import Action from './Action'
 import { useState } from 'react'
 
-export default function CustomAction({ setAction }) {
+export default function CustomAction({ setAction, checked }) {
     const [click, setClick] = useState(false)
 
     const action = (act) => {
@@ -14,7 +14,7 @@ export default function CustomAction({ setAction }) {
         <div className="">
             <ModalAction state={click} action={action}/>
             <button onClick={() => setClick(true)}>
-                <Action action={"Set Custom"} onChange={()=>{}}/>
+                <Action action={"Set Custom"} onChange={()=>{}} checked={checked}/>
             </button>
         </div>
     )

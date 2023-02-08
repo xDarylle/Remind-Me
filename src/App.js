@@ -12,21 +12,98 @@ const initialTime = {
   format: ""
 }
 
+const initialActionChecked = {
+  drink: false,
+  break: false,
+  custom: false
+}
+
+const initialTimeChecked = {
+  min_20: false,
+  min_10: false,
+  hr_1: false,
+  custom: false
+}
+
+const initiaRepeatChecked = {
+  once: false,
+  repeat: false,
+}
+
 function App() {
   const [{ time, format }, setTime] = useState(initialTime)
   const [repeat, setRepeat] = useState("")
   const [action, setAction] = useState("")
   const [futureTime, setFutureTime] = useState(0)
 
+  const [actionChecked, setActionChecked] = useState(initialActionChecked)
+  const [repeatChecked, setRepeatChecked] = useState(initiaRepeatChecked)
+  const [timeChecked, setTimeChecked] = useState(initialTimeChecked)
+
+  const setChecked = (setState, name) => {
+    setState((prevState) => ({ ...prevState, [name]: true }))
+  }
+
   const handleRepeat = (repeat) => {
+    let name
+
+    switch(repeat) {
+      case "Once":
+        name = "once"
+        break
+      case "Repeat":
+        name = "repeat"
+        break
+      default:
+        name = "once"
+    }
+
+    setRepeatChecked(initiaRepeatChecked)
+    setChecked(setRepeatChecked, name)
     setRepeat(repeat)
   }
 
   const handleAction = (action) => {
+    let name
+
+    switch(action) {
+      case "Drink water":
+        name = "drink"
+        break
+      case "Take a break":
+        name = "break"
+        break
+      default:
+        name = "custom"
+    }
+    
+    setActionChecked(initialActionChecked)
+    setChecked(setActionChecked, name)
     setAction(action)
   }
 
   const handleTime = (time, format) => {
+    let name
+
+    switch(time) {
+      case "10":
+        name = "min_10"
+        break
+      case "20":
+        name = "min_20"
+        break
+      case "1":
+        if (format === "hour") 
+          name = "hr_1"
+        else 
+          name = "custom"
+        break
+      default:
+        name = "custom"
+    }
+
+    setTimeChecked(initialTimeChecked)
+    setChecked(setTimeChecked, name)
     setTime({ time: time, format: format })
   }
 
@@ -35,6 +112,10 @@ function App() {
     setRepeat("")
     setAction("")
     setFutureTime(0)
+
+    setTimeChecked(initialTimeChecked)
+    setActionChecked(initialActionChecked)
+    setRepeatChecked(initiaRepeatChecked)
   }
 
   useEffect(() => {
@@ -77,24 +158,24 @@ function App() {
         <div className="flex flex-col gap-y-2">
           <p className="">Set Time</p>
           <div className="flex flex-row gap-x-2">
-            <Time time="10" format={'minute'} onChange={handleTime} />
-            <Time time="20" format={'minute'} onChange={handleTime} />
-            <Time time="1" format={'hour'} onChange={handleTime} />
-            <CustomTime setTime={handleTime} />
+            <Time time="10" format={'minute'} onChange={handleTime} checked={timeChecked.min_10}/>
+            <Time time="20" format={'minute'} onChange={handleTime} checked={timeChecked.min_20}/>
+            <Time time="1" format={'hour'} onChange={handleTime} checked={timeChecked.hr_1}/>
+            <CustomTime setTime={handleTime} checked={timeChecked.custom}/>
           </div>
           <p className="">Set Repeat</p>
           <div className="flex flex-row gap-x-2">
-            <Repeat repeat={'Once'} onChange={handleRepeat} />
-            <Repeat repeat={'Repeat'} onChange={handleRepeat} />
+            <Repeat repeat={'Once'} onChange={handleRepeat} checked={repeatChecked.once}/>
+            <Repeat repeat={'Repeat'} onChange={handleRepeat} checked={repeatChecked.repeat}/>
           </div>
         </div>
 
         <div className="flex flex-col gap-y-2">
           <p className="">Set Action</p>
           <div className="flex flex-row gap-2">
-            <Action action="Drink water" onChange={handleAction} />
-            <Action action="Take a break" onChange={handleAction} />
-            <CustomAction setAction={setAction} />
+            <Action action="Drink water" onChange={handleAction} checked={actionChecked.drink}/>
+            <Action action="Take a break" onChange={handleAction} checked={actionChecked.break}/>
+            <CustomAction setAction={handleAction} checked={actionChecked.custom}/>
           </div>
         </div>
 
