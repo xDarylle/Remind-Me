@@ -7,6 +7,8 @@ import CustomAction from './components/CustomAction'
 import { useState, useEffect } from 'react'
 import { getCurrentTime, getFutureTime } from './hooks/time'
 
+import addNotification from 'react-push-notification';
+
 const initialTime = {
   time: "",
   format: ""
@@ -39,6 +41,9 @@ function App() {
   const [actionChecked, setActionChecked] = useState(initialActionChecked)
   const [repeatChecked, setRepeatChecked] = useState(initiaRepeatChecked)
   const [timeChecked, setTimeChecked] = useState(initialTimeChecked)
+
+  // request notification permission first
+  Notification.requestPermission()
 
   const setChecked = (setState, name) => {
     setState((prevState) => ({ ...prevState, [name]: true }))
@@ -118,11 +123,20 @@ function App() {
     setRepeatChecked(initiaRepeatChecked)
   }
 
+  const pushNotification = () => {
+    addNotification({
+        title: action ,
+        native: true // when using native, your OS will handle theming.
+    })
+  }
+
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (getCurrentTime() === futureTime) {
         console.log(getCurrentTime(), futureTime)
         console.log(action)
+        pushNotification()
 
         if (repeat === "Repeat") {
           setFutureTime(getFutureTime(time, format))

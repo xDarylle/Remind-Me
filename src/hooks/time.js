@@ -8,7 +8,8 @@ export const getFutureTime = (value, format) => {
     const currentTime = getCurrentTime()
 
     if (format === "minute") {
-        return (value * 60) + currentTime
+        //return (value * 60) + currentTime
+        return 3 + currentTime
     }
 
     if (format === "hour") {
