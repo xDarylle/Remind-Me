@@ -11,9 +11,9 @@ export default function CustomTime({ setTime, checked}) {
     }
 
     return (
-        <div className="">
+        <div className="w-full">
             <Modal state={click} type='time' action={action}/>
-            <button onClick={() => setClick(true)}>
+            <button onClick={() => setClick(true)} className="w-full">
                 <Time time="Set" format="Custom" onChange={()=>{}} checked={checked}/>
             </button>
         </div>

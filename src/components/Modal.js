@@ -13,11 +13,11 @@ export default function Modal({ state, action }) {
                 <div className="flex flex-row gap-x-3 items-start">
                     <div className="flex flex-col w-full gap-y-1 items-center justify-between">
                         <p>Time</p>
-                        <input type='text' className="w-32 text-black text-xl p-1 rounded" value={time} name='time' onChange={(event) => onChange(event)} required></input>
+                        <input type='text' className="w-32 text-black text-base p-1 rounded" value={time} name='time' onChange={(event) => onChange(event)} required></input>
                     </div>
                     <div className="flex flex-col w-full gap-y-1 items-center justify-between">
                         <p>Format</p>
-                        <select className="w-32 text-black p-1 rounded text-xl" name='format' onChange={(event) => onChange(event)} required>
+                        <select className="w-32 text-black/80 p-1 rounded text-base" name='format' onChange={(event) => onChange(event)} required>
                             <option value="minute">Minute</option>
                             <option value="hour">Hour</option>
                         </select>

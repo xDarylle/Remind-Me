@@ -13,7 +13,7 @@ export default function ModalAction({ state, action }) {
                 <div className="flex flex-row gap-x-3 items-start">
                     <div className="flex flex-col w-full gap-y-1 items-center justify-between">
                         <p>Action</p>
-                        <input type='text' placeholder="Set custom action" className="w-42 text-black text-xl p-1 rounded" value={act} onChange={(event) => onChange(event)} required></input>
+                        <input type='text' placeholder="Set custom action" className="w-42 text-black/80 text-xl p-2 rounded" value={act} onChange={(event) => onChange(event)} required></input>
                     </div>
                 </div>
                 <button onClick={()=> action(act)} className="bg-gray-600 px-5 py-2 rounded hover:bg-rose-600">Cofirm</button>

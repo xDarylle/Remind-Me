@@ -134,8 +134,6 @@ function App() {
   useEffect(() => {
     const interval = setInterval(() => {
       if (getCurrentTime() === futureTime) {
-        console.log(getCurrentTime(), futureTime)
-        console.log(action)
         pushNotification()
 
         if (repeat === "Repeat") {
@@ -154,11 +152,11 @@ function App() {
   }, [time, format, repeat, action])
 
   return (
-    <div className="w-full min-h-screen flex justify-center items-center bg-slate-900">
-      <div className="flex flex-col gap-y-3 text-white p-5">
+    <div className="w-full min-h-screen bg-slate-900 flex justify-center align-center">
+      <div className="flex flex-col gap-y-3 text-white md:w-5/6 lg:w-2/5 w-full p-5  flex justify-center align-center">
         <div className="flex flex-col gap-y-2">
           <div className="flex flex-row justify-between">
-            <p className="font-medium text-2xl">Remind me to</p>
+            <p className="font-medium text-3xl">Remind me to</p>
             <button onClick={reset}>Reset</button>
           </div>
           <div className={`w-full rounded-md ${action && time && repeat ? "bg-rose-600" : "bg-gray-700"} text-white px-5 py-10 text-center font-bold text-2xl`}>
