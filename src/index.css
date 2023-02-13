@@ -1,3 +1,8 @@
+body {
+    --toastify-color-progress-dark: #E11D48;
+    --toastify-color-dark:rgb(31 41 55);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
