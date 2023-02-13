@@ -1,5 +1,5 @@
 # Remind Me - React App
-Check this project on vercel - [Remind Me](https://remind-16o9610mf-xshiro2.vercel.app)
+Check this project on vercel - [Remind Me](https://remind-me-git-main-xshiro2.vercel.app/)
 ## Built using:
 - reactjs
 - tailwindcss
