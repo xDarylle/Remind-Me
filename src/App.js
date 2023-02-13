@@ -128,7 +128,10 @@ function App() {
   const pushNotification = () => {
     addNotification({
       title: action,
-      native: true // when using native, your OS will handle theming.
+      native: true, // when using native, your OS will handle theming.
+      icon: "/favicon.ico", 
+      vibrate: 1, 
+      silent: false
     })
   }
 
