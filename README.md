@@ -1,8 +1,11 @@
 # Remind Me - React App
-Check this project on vercel - [Remind Me](https://remind-me-git-main-xshiro2.vercel.app/)
-## Built using:
-- reactjs
-- tailwindcss
+<img
+  src="app.png"
+  alt="Product Page"
+  style="display: inline-block; margin: 0 auto">
+
+This is a simple reminder app that I made using ReactJS and Tailwind for practice. Check this project on vercel through [here](https://remind-me-ten.vercel.app/).
+
 
 ## Getting started
 #### 1. Access directory
